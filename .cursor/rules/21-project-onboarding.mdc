@@ -242,10 +242,10 @@ project/
 ### Frontend
 | Տեխնոլոգիա | Տարբերակ | Նշանակություն |
 |------------|--------|------------|
-| Next.js | 14/15 | Framework |
-| React | 18 | UI Library |
-| TypeScript | 5.x | Type safety |
-| Tailwind CSS | 3.x | Styling |
+| Next.js | 16 | Framework |
+| React | 19 | UI Library |
+| TypeScript | 5.9 | Type safety |
+| Tailwind CSS | 4.x | Styling |
 | React Query | 5.x | Server state |
 | Zustand | 4.x | Client state |
 | React Hook Form | 7.x | Forms |
@@ -254,9 +254,9 @@ project/
 ### Backend (եթե B/C)
 | Տեխնոլոգիա | Տարբերակ | Նշանակություն |
 |------------|--------|------------|
-| NestJS | 10.x | Framework |
-| Prisma | 5.x | ORM |
-| PostgreSQL | 16 | Database |
+| NestJS | 11.x | Framework |
+| Prisma | 7.x | ORM |
+| PostgreSQL | 17 | Database |
 | Neon | - | Managed Postgres |
 
 ### DevOps
@@ -473,7 +473,7 @@ If Prisma is used:
 
 | Կատեգորիա | Տեխնոլոգիա | Տարբերակ | Նշանակություն |
 |-----------|------------|--------|------------|
-| Frontend | Next.js | 14.x | Framework |
+| Frontend | Next.js | 16.x | Framework |
 | ... | ... | ... | ... |
 
 ---

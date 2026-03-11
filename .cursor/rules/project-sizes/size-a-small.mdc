@@ -103,10 +103,10 @@ pnpm dev
 
 ## Տեխնոլոգիաներ
 
-- Next.js 15
+- Next.js 16
 - TypeScript
 - Tailwind CSS 4
-- Prisma 6 + PostgreSQL (Neon)
+- Prisma 7 + PostgreSQL (Neon)
 - Auth.js 5
 - Cloudflare R2
 
