@@ -526,7 +526,7 @@
 - [ ] lint-staged config added to package.json
 - [ ] Scripts from 17-cicd.mdc added (ci:check, format:check, lint, typecheck, test, build)
 - [ ] `--max-warnings=0` in lint, `--passWithNoTests` in test
-- [ ] CI workflow: `cp reference/workflows/ci-quality.yml.example .github/workflows/ci.yml`
+- [ ] CI workflow: `cp docs/reference/workflows/ci-quality.yml.example .github/workflows/ci.yml`
 - [ ] Dependabot: uncomment npm section in `.github/dependabot.yml`
 
 ## DevOps

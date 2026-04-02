@@ -1,5 +1,5 @@
 ---
-description: CI/CD — pipelines, secrets, Docker, managed deploys. Detailed examples live in reference/.
+description: CI/CD — pipelines, secrets, Docker, managed deploys. Detailed examples live in docs/reference/.
 globs: [".github/**", "**/Dockerfile", "**/docker-compose*"]
 alwaysApply: false
 ---
@@ -16,4 +16,4 @@ alwaysApply: false
 - **Feature flags:** document each flag; remove after full rollout; log which variant served.
 - **Dependency policy:** patch quickly; minor after changelog review; major as planned work with tests.
 
-**Templates:** `reference/workflows/ci-quality.yml.example`, extended patterns previously in this file now belong in `reference/` or team docs — keep `.mdc` lean.
+**Templates:** `docs/reference/workflows/ci-quality.yml.example`, extended patterns previously in this file now belong in `docs/reference/` or team docs — keep `.mdc` lean.

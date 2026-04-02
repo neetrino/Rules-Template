@@ -1,12 +1,12 @@
 ---
-description: Security — secrets, auth, validation, headers, CORS. Human-run checklist: reference/Check/Security/0 Security List.md
+description: Security — secrets, auth, validation, headers, CORS. Human-run checklist: docs/reference/Check/Security/0 Security List.md
 globs: ["**/auth/**", "**/api/**", "**/middleware.ts", "**/middleware.tsx", "**/*.env*", "**/middleware/**"]
 alwaysApply: false
 ---
 
 # Security
 
-**Operational checklist (panels, WAF, MFA, backups):** read when auditing — [`reference/Check/Security/0 Security List.md`](reference/Check/Security/0 Security List.md).
+**Operational checklist (panels, WAF, MFA, backups):** read when auditing — [`docs/reference/Check/Security/0 Security List.md`](docs/reference/Check/Security/0 Security List.md).
 
 ## Never
 
@@ -29,7 +29,7 @@ alwaysApply: false
 - Sanitize HTML if rendering user HTML; avoid `dangerouslySetInnerHTML` with raw user data.
 - **CORS** allowlist for prod/staging; no `*` with credentials.
 - **Webhooks**: verify HMAC/signature; idempotency + replay protection for payments.
-- **Rate limit** auth and sensitive endpoints (app or edge/WAF per `reference/Check/Security/`).
+- **Rate limit** auth and sensitive endpoints (app or edge/WAF per `docs/reference/Check/Security/`).
 
 ## Responses
 
