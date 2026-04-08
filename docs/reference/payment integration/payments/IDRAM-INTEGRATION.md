@@ -51,11 +51,11 @@ Idram merchant panel-ում գրանցել.
 
 | Պարամետր | URL |
 |----------|-----|
-| **RESULT_URL** | `https://yoursite.com/wc-api/idram_result` |
-| **SUCCESS_URL** | `https://yoursite.com/wc-api/idram_complete` |
-| **FAIL_URL** | `https://yoursite.com/wc-api/idram_fail` |
+| **RESULT_URL** | `https://yoursite.com/api/v1/payments/idram/callback` |
+| **SUCCESS_URL** | `https://yoursite.com/api/v1/payments/idram/success` |
+| **FAIL_URL** | `https://yoursite.com/api/v1/payments/idram/fail` |
 
-WordPress-անման path (`/wc-api/...`) — ըստ նախագծի; կարող եք օգտագործել նաև `/api/payments/idram/...` եթե Idram-ում կարգավորեք համապատասխան URL-ներ:
+Callback path-երը (`/api/v1/payments/idram/...`) — ըստ նախագծի; Idram merchant panel-ում գրանցեք `APP_URL` + path համակցությունը։
 
 ---
 
@@ -171,17 +171,17 @@ Idram-ի դեպքում **քարտի տվյալների մոդալ** (card numbe
 
 ---
 
-## 11. Թեստ (ngrok) և production URL
+## 11. Թեստ (Cloudflare Tunnel) և production URL
 
-- **Թեստ.** Idram-ում կարող եք ժամանակավոր գրանցել ngrok URL (օր. RESULT_URL = `https://xxx.ngrok-free.dev/api/payments/idram/callback`, SUCCESS/FAIL = `.../order-success?...`): app-ում ավելացնել համապատասխան route-եր (POST callback, GET order-success), թեստ անել, ապա Idram-ում URL-ները **վերադարձնել** production-ի (`wc-api/idram_result`, `wc-api/idram_complete`, `wc-api/idram_fail`).
-- **Production.** Միայն wc-api (կամ ձեր ընտրած) path-եր; Idram panel-ում URL-ները պետք է համապատասխանեն app-ի route-երին:
+- **Թեստ.** Cloudflare Tunnel (`dev.neetrino.com`) — մշտական domain, URL-ները չեն փոխվում վերագործարկման ժամանակ. RESULT_URL = `https://dev.neetrino.com/api/v1/payments/idram/callback`, SUCCESS_URL = `https://dev.neetrino.com/api/v1/payments/idram/success`, FAIL_URL = `https://dev.neetrino.com/api/v1/payments/idram/fail`. Մանրամասները՝ `03-TESTING-GUIDE.md`:
+- **Production.** Միայն `/api/v1/payments/idram/...` path-եր; Idram panel-ում URL-ները պետք է համապատասխանեն app-ի route-երին:
 
 ---
 
 ## 12. Checklist — նոր նախագծում Idram միացնելիս
 
 - [ ] Env: `IDRAM_TEST_MODE`, `IDRAM_REC_ACCOUNT`, `IDRAM_SECRET_KEY` (test/live), `APP_URL`.
-- [ ] Idram panel: SUCCESS_URL, FAIL_URL, RESULT_URL — ձեր domain + path (օր. wc-api/idram_*).
+- [ ] Idram panel: SUCCESS_URL, FAIL_URL, RESULT_URL — ձեր domain + path (օր. `/api/v1/payments/idram/callback`, success, fail).
 - [ ] Form POST to `https://banking.idram.am/Payment/GetPayment`, UTF-8; EDP_BILL_NO = order.number.
 - [ ] RESULT_URL handler: (a) precheck — validate order/amount from **DB**, respond exactly **«OK»**; (b) confirm — verify **checksum** (doc order), amount from DB, then «OK».
 - [ ] Response **plain text**, no HTML.

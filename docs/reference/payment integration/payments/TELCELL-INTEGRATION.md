@@ -50,8 +50,8 @@ Telcell-ում գրանցել.
 
 | Պարամետր | URL |
 |----------|-----|
-| **RESULT_URL** | `https://yoursite.com/wc-api/telcell_result` |
-| **REDIRECT_URL** | `https://yoursite.com/wc-api/telcell_redirect` |
+| **RESULT_URL** | `https://yoursite.com/api/v1/payments/telcell/callback` |
+| **REDIRECT_URL** | `https://yoursite.com/api/v1/payments/telcell/redirect` |
 
 ---
 
@@ -137,9 +137,9 @@ POST `/api/v1/payments/telcell/init` body `{ orderNumber, lang? }` → `{ redire
 | Օգտատերը չի վերադառնում / wrong page | REDIRECT_URL, APP_URL |
 | Սխալ Telcell-ի էջում | Support + նրանց logs |
 
-**RESULT_URL.** Endpoint `https://<դոմեն>/wc-api/telcell_result`. Telcell-ից հաստատել, որ test/live-ում RESULT_URL-ը ձեր դոմենի վրա է; localhost-ում callback-ը չի աշխատի.
+**RESULT_URL.** Endpoint `https://<դոմեն>/api/v1/payments/telcell/callback`. Telcell-ից հաստատել, որ test/live-ում RESULT_URL-ը ձեր դոմենի վրա է; localhost-ում callback-ը չի աշխատի.
 
-**REDIRECT_URL.** Մենք ակնկալում ենք redirect `.../wc-api/telcell_redirect?issuer_id=...` (կամ `order=...`). Support-ից հաստատել գրանցված URL-ը.
+**REDIRECT_URL.** Մենք ակնկալում ենք redirect `.../api/v1/payments/telcell/redirect?issuer_id=...` (կամ `order=...`). Support-ից հաստատել գրանցված URL-ը.
 
 **PostInvoice URL.** Միշտ `https://telcellmoney.am/invoices` (ոչ proto_test2). Test/live — նույն URL, տարբեր credentials.
 

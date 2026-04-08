@@ -261,12 +261,12 @@ API-ն կարող է վերադարձնել `responseCode` / `PaymentState` / `O
 
 ## 12. Callback URL-ներ (օրինակ)
 
-WordPress-անման compatibility-ի համար հաճախ օգտագործում են `/wc-api/...`:
+Հաճախ BackURL-ը կարգավորում են `/api/v1/payments/ameriabank/callback` path-ով.
 
-- Success/fail միևնույն BackURL (օր. `https://yoursite.com/wc-api/ameriabank_successful`) — արդյունքը միշտ GetPaymentDetails-ով.
-- Fail redirect (եթե առանձին է) — օր. `ameriabank_failed`; բանկը կարող է ուղարկել այդ URL, եթե կարգավորված է.
+- Success/fail միևնույն BackURL (օր. `https://yoursite.com/api/v1/payments/ameriabank/callback`) — արդյունքը միշտ GetPaymentDetails-ով.
+- Fail redirect (եթե առանձին է) — օր. նույն `api/v1/payments/ameriabank/callback`; բանկը կարող է ուղարկել այդ URL, եթե կարգավորված է.
 
-Մեր օրինակում BackURL = `{APP_URL}/wc-api/ameriabank_successful`.  
+Մեր օրինակում BackURL = `{APP_URL}/api/v1/payments/ameriabank/callback`.  
 Callback handler-ը GET-ով ստանում է query params, կանչում GetPaymentDetails, թարմացնում order/payment, redirect `/checkout/success` կամ `/checkout/error`.
 
 ---

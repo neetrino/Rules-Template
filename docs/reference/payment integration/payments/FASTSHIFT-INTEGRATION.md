@@ -3,7 +3,6 @@
 > Այս փաստաթուղթը նախատեսված է **FastShift** (e-wallet / vPOS) միացման համար։ Register order → redirect_url → callback/webhook։
 >
 > **Պաշտոնական API.** `payment integration/| Official doc for the API integrationm/FastShift/PayByFastShift (vers25.02.25).md` — Pay by FastShift v1.0. Իրականացումը համապատասխանում է այդ փաստաթղթին (Register order API, callback params `status` + `order_number`, response `data.redirect_url`, `data.order`).
-> **Օրինակ.** `payment integration/Example only/HK Agency/payment-gateway-for-fastshift` (WordPress plugin — order_number = GUID, callback_url with order_id).
 
 ---
 
@@ -64,8 +63,8 @@ FastShift-ում (register request-ում) փոխանցվում են.
 
 | Պարամետր | URL |
 |----------|-----|
-| **callback_url** | `https://yoursite.com/wc-api/fastshift_response` |
-| **webhook_url** (optional) | `https://yoursite.com/wc-api/fastshift_response` |
+| **callback_url** | `https://yoursite.com/api/v1/payments/fastshift/callback` |
+| **webhook_url** (optional) | `https://yoursite.com/api/v1/payments/fastshift/callback` |
 
 Իրականացումում երկուսն էլ ուղարկվում են նույն URL-ին (GET — user redirect, POST — webhook).
 
@@ -89,7 +88,7 @@ FastShift-ում (register request-ում) փոխանցվում են.
 
 | Դաշտ | Նկարագրություն |
 |------|------------------|
-| order_number | **GUID/UUID** (օր. `a1b2c3d4-e5f6-7890-abcd-ef1234567890`) — FastShift-ը սպասում է unique identifier, ոչ թե մեր պատվերի համարը. տես HK Agency plugin `generateOrderNumberGUID()` |
+| order_number | **GUID/UUID** (օր. `a1b2c3d4-e5f6-7890-abcd-ef1234567890`) — FastShift-ը սպասում է unique identifier, ոչ թե մեր պատվերի համարը. տես `generateFastshiftOrderGuid()` |
 | amount | Գումար (ամբողջ թիվ, Math.round(total)) |
 | description | Օր. "Order 260218-12345" |
 | callback_url | Full URL — user redirect after payment; URL-ում պետք է ունենալ մեր order, օր. `...?order=260218-12345` |
@@ -120,7 +119,7 @@ POST `/api/v1/payments/fastshift/init` body `{ orderNumber }` → response `{ re
 ## 8. Checklist
 
 - [x] Env: FASTSHIFT_TEST_MODE, FASTSHIFT_TOKEN (test), FASTSHIFT_LIVE_TOKEN (live).
-- [x] Register request: order_number = **GUID (UUID)**; callback_url = `{APP_URL}/wc-api/fastshift_response?order={order.number}`.
+- [x] Register request: order_number = **GUID (UUID)**; callback_url = `{APP_URL}/api/v1/payments/fastshift/callback?order={order.number}`.
 - [x] Callback: order by `order` (URL) or `order_number` (GUID); status verified via **GET /vpos/order/status** (source of truth); idempotent if already paid.
 - [x] GET callback → redirect user to success or checkout; POST webhook → 200; errors → 400/redirect without leaking internals.
 - [x] Checkout-ում FastShift ընտրելիս redirect to FastShift (ոչ card modal).
