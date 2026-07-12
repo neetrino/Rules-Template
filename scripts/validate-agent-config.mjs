@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
-import { dirname, join, relative, resolve } from 'node:path';
+import { basename, dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const skillRoot = join(repoRoot, '.agents', 'skills');
 const ruleRoot = join(repoRoot, '.cursor', 'rules');
+const agentSystemRoot = join(repoRoot, '.agents', 'system');
 const errors = [];
 const warnings = [];
 
@@ -23,6 +24,10 @@ function filesUnder(root, predicate) {
     else if (predicate(path)) found.push(path);
   }
   return found;
+}
+
+function readSource(file) {
+  return readFileSync(file, 'utf8').replace(/\r\n?/g, '\n');
 }
 
 function readFrontmatter(file, source) {
@@ -66,10 +71,10 @@ function validateSkills() {
     report(errors, skillRoot, 'Canonical Skill directory is missing.');
     return;
   }
-  const skillFiles = filesUnder(skillRoot, (file) => file.endsWith('/SKILL.md'));
+  const skillFiles = filesUnder(skillRoot, (file) => basename(file) === 'SKILL.md');
   const names = new Map();
   for (const file of skillFiles) {
-    const source = readFileSync(file, 'utf8');
+    const source = readSource(file);
     const fields = readFrontmatter(file, source);
     if (!fields) continue;
     const name = fields.get('name') ?? '';
@@ -79,7 +84,7 @@ function validateSkills() {
     if (name && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name)) {
       report(errors, file, 'Skill name must be lowercase kebab-case.');
     }
-    if (name && dirname(file).split('/').at(-1) !== name) {
+    if (name && basename(dirname(file)) !== name) {
       report(errors, file, 'Skill name must match its direct parent directory.');
     }
     if (name && names.has(name)) {
@@ -103,7 +108,7 @@ function validateRules() {
     return;
   }
   for (const file of filesUnder(ruleRoot, (path) => path.endsWith('.mdc'))) {
-    const source = readFileSync(file, 'utf8');
+    const source = readSource(file);
     if (!source.trim()) {
       report(errors, file, 'Rule file is empty.');
       continue;
@@ -127,12 +132,44 @@ function validateRules() {
   }
 }
 
+function validateDocumentationLinks() {
+  const files = [
+    join(repoRoot, 'AGENTS.md'),
+    join(repoRoot, 'README.md'),
+    join(repoRoot, '.agents', 'README.md'),
+    ...filesUnder(agentSystemRoot, (file) => file.endsWith('.md')),
+  ];
+  for (const file of files) {
+    if (!existsSync(file)) {
+      report(errors, file, 'Required Agent-system entry point or documentation file is missing.');
+      continue;
+    }
+    validateLocalLinks(file, readSource(file));
+  }
+}
+
+function validateArchitecturalIsolation() {
+  const misplacedFiles = [
+    'RULES_SKILLS_ARCHITECTURE.md',
+    'SKILL_AUTHORING_GUIDE.md',
+    'SKILL_TRIGGER_TESTS.md',
+  ];
+  for (const name of misplacedFiles) {
+    const file = join(repoRoot, 'docs', name);
+    if (existsSync(file)) {
+      report(errors, file, 'Agent-system governance belongs under .agents/system/, not product docs/.');
+    }
+  }
+}
+
 validateSkills();
 validateRules();
+validateDocumentationLinks();
+validateArchitecturalIsolation();
 
 for (const item of errors) console.error(`ERROR\nFILE: ${item.file}\nREASON: ${item.reason}\n`);
 for (const item of warnings) console.warn(`WARNING\nFILE: ${item.file}\nREASON: ${item.reason}\n`);
 
-console.log(`Validated ${filesUnder(skillRoot, (file) => file.endsWith('/SKILL.md')).length} Skills and ${filesUnder(ruleRoot, (file) => file.endsWith('.mdc')).length} Rules.`);
+console.log(`Validated ${filesUnder(skillRoot, (file) => basename(file) === 'SKILL.md').length} Skills and ${filesUnder(ruleRoot, (file) => file.endsWith('.mdc')).length} Rules.`);
 console.log(`Errors: ${errors.length}; Warnings: ${warnings.length}`);
 process.exitCode = errors.length ? 1 : 0;
