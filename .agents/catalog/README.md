@@ -23,7 +23,7 @@ This directory is the machine-checkable registry for curated Agent Skills, compo
 → immutable external provenance
 ```
 
-`.agents/library/` is created only when the first real curated inactive Skill is accepted.
+Researching an external source does not make it a content provenance dependency. Source Lock registration is required when external content is copied or materially adapted, not when a source only informs a documented research decision. Strict licensing review still applies before any external content enters a package.
 
 ## Source of truth
 

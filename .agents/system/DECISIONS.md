@@ -99,3 +99,23 @@ Context: Profiles need to describe active and curated inactive workflows before 
 Decision: Profiles may reference active and library Skills; membership does not activate a library package.
 
 Consequences: Profile resolution must expose package state and reject deprecated Skills.
+
+## D-011 — Unlicensed candidates may inform research but not implementation content
+
+Status: accepted
+
+Context: A useful external candidate may lack the exact applicable license text required for copying or adaptation.
+
+Decision: Record the research outcome, but implement only an independently authored internal workflow when no external content, files, examples, or taxonomy are copied or materially adapted.
+
+Consequences: Research remains auditable without weakening licensing requirements or creating a Source Lock dependency.
+
+## D-012 — Research-only references are not provenance dependencies
+
+Status: accepted
+
+Context: Secondary sources may help evaluate a workflow while contributing no content to the accepted package.
+
+Decision: Require Source Lock provenance only for sources whose content is copied or materially adapted. Record research-only sources in evaluation notes instead.
+
+Consequences: Provenance stays precise while external-adapted packages remain tied only to their actual content sources.

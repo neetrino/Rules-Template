@@ -127,3 +127,39 @@ These routing cases review Skill descriptions for clear positive and negative bo
 | “Review this PR for general correctness.” | `code-review` | General review, not dedicated security scope. |
 | “Add a normal profile field.” | No `security-review` | Ordinary feature without a material security boundary. |
 | “The endpoint returns an unexpected 500.” | `debug-first` | Defect diagnosis is primary. |
+
+## react-performance-review
+
+### Positive
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Review this React dashboard for avoidable rerenders and expensive client work.” | `react-performance-review` | Explicit React performance assessment. |
+| “Find the highest-impact Next.js performance risks in this feature before release.” | `react-performance-review` | Project-aware performance review with prioritization. |
+| “Check whether this component tree has unnecessary client boundaries or repeated computation.” | `react-performance-review` | React rendering and boundary analysis. |
+
+### Negative
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “The page became slow after yesterday's commit; reproduce and fix the regression.” | `debug-first` | A reported regression requires root-cause diagnosis first. |
+| “Implement this Figma screen in React.” | `figma-to-production` | Design implementation is primary. |
+| “Explain what React memoization does.” | No `react-performance-review` | Explanation-only request. |
+
+## ui-accessibility-review
+
+### Positive
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Review this checkout UI for keyboard, focus, form, and screen-reader accessibility.” | `ui-accessibility-review` | Explicit accessibility assessment. |
+| “Audit this dialog and menu against our accessibility and interaction requirements.” | `ui-accessibility-review` | Overlay semantics and keyboard behavior are in scope. |
+| “Check this responsive page for touch targets, motion, loading states, and accessible navigation.” | `ui-accessibility-review` | Broad UI accessibility and UX review. |
+
+### Negative
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Implement this attached Figma design.” | `figma-to-production` | Design implementation is primary. |
+| “The modal focus trap stopped working after an upgrade; find and fix the cause.” | `debug-first` | A concrete defect requires diagnosis. |
+| “Change the button label from Save to Submit.” | No `ui-accessibility-review` | Isolated copy edit does not require a review workflow. |

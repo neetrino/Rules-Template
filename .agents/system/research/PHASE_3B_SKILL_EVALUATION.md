@@ -12,8 +12,8 @@ Practical value, scope clarity, trigger quality, token efficiency, portability, 
 
 - `code-review` — internal.
 - `security-review` — internal.
-- `react-performance-review` — external-adapted; implementation blocked because the pinned source has no verifiable license text.
-- `ui-accessibility-review` — external-adapted; implementation blocked because the required secondary-source license cannot be verified at its pinned commit.
+- `react-performance-review` — internal, independently authored after the external candidate could not satisfy licensing policy.
+- `ui-accessibility-review` — external-adapted from the licensed primary source only.
 
 ## Deferred to Batch 2
 
@@ -48,8 +48,8 @@ Codex Security, Vercel Optimize, Cloudflare platform Skills, and Wrangler depend
 | --- | --- | --- | --- | --- | --- |
 | code-review | High | Clear review boundary | High | Complements debugging and verification | Internal Batch 1 |
 | security-review | High for sensitive work | Explicit audit boundary | High | Must not replace Security Rule | Internal Batch 1 |
-| react-performance-review | High for React/Next.js | Must be narrower than source | Medium–high | Requires project-aware adaptation and verified license | Blocked external import |
-| ui-accessibility-review | High for UI quality | Separate review from implementation | High | Exclude brand preferences and verify all provenance | Blocked external import |
+| react-performance-review | High for React/Next.js | Narrow performance-review boundary | High | Independently authored; no external content copied | Internal Batch 1B |
+| ui-accessibility-review | High for UI quality | Separate review from implementation | High | Licensed primary source and local reviewed guidance | External-adapted Batch 1B |
 | web-performance-audit | High | Measurement-focused | Medium | Overlap with React and completion checks | Batch 2 |
 | api-contract-change | Medium–high | Clear API evolution workflow | High | Overlap with API Rule | Batch 2 |
 | safe-dependency-upgrade | Medium–high | Clear upgrade workflow | High | Needs supply-chain safeguards | Batch 2 |
@@ -72,7 +72,7 @@ No external scripts or install commands were executed.
 
 ## Limitations
 
-Phase 3B was an external qualitative architecture and source review. No controlled benchmark comparing pass rate, token usage, or completion time has been run. Accepted Skills still require real-project evaluation after implementation. The current license blocker prevents a complete Batch 1 import and must not be represented as successful provenance review.
+Phase 3B was an external qualitative architecture and source review. No controlled benchmark comparing pass rate, token usage, or completion time has been run. Accepted Skills still require real-project evaluation after implementation.
 
 ## External candidate disposition
 
@@ -80,17 +80,17 @@ Phase 3B was an external qualitative architecture and source review. No controll
 
 Research decision: Accepted conceptually.
 
-Implementation status: Blocked.
+Implementation status: Accepted as an internal, independently authored Skill.
 
-Reason: The reviewed pinned `vercel-labs/agent-skills` source declares MIT in metadata and repository documentation, but the exact applicable license text and notice required by the current External Skill Policy could not be verified from the pinned source.
+Reason: The reviewed external candidate did not provide the exact applicable license text required by policy. The implementation was therefore written independently as an internal project-aware workflow. No external content, files, examples, or taxonomy were copied or adapted, and the licensing policy remains unchanged.
 
-Next action: Replace the source with a fully licensed alternative, obtain authoritative license clarification, or redesign the Skill as an independently authored internal workflow after a clean source-separation review.
+Next action: Evaluate the internal workflow on real React and Next.js changes before considering activation.
 
 ### ui-accessibility-review
 
 Research decision: Accepted conceptually.
 
-Implementation status: Deferred to Batch 1B.
+Implementation status: Accepted as external-adapted in Batch 1B.
 
 Primary source: `vercel-labs/web-interface-guidelines`.
 
@@ -98,6 +98,8 @@ Primary source license: Verified MIT license.
 
 Secondary wrapper: `vercel-labs/agent-skills`.
 
-Secondary wrapper status: Not required for content provenance if no content is copied or adapted from it.
+Secondary wrapper status: Research-only. No content was copied or adapted from it, so it is not a provenance dependency.
 
-Next action: Re-scope the implementation to use only the fully licensed primary source, and treat the wrapper only as a non-content research reference or remove it from implementation provenance entirely.
+Adaptation: Runtime remote fetching was removed. The package uses concise, local, project-aware reviewed guidance tied to the pinned primary source.
+
+Next action: Evaluate the adapted workflow on real UI changes before considering activation.

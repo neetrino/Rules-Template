@@ -62,16 +62,18 @@ Outcome:
 - external provenance hardening;
 - profile state distinction.
 
-### Batch 1B — External adapted Skills
+### Batch 1B — Performance and Accessibility Skills
 
-Status: blocked
+Status: completed
 
-Blocker: Verified and reproducible source licensing for `react-performance-review`.
+Outcome:
 
-Planned:
+- independently authored internal `react-performance-review` after the external candidate failed licensing requirements;
+- `ui-accessibility-review` adapted only from the pinned MIT-licensed primary source;
+- Source Lock and package-level license validation hardened;
+- frontend profile and trigger coverage extended.
 
-- `react-performance-review`;
-- `ui-accessibility-review`.
+Next: evaluate Batch 1 Skills on real projects, then begin Batch 2.
 
 ## Phase 3D — Profile refinement
 

@@ -55,7 +55,9 @@ Skill behavior remains in `SKILL.md`; catalog files do not duplicate workflow in
 │   └── figma-to-production/
 ├── library/
 │   ├── code-review/
-│   └── security-review/
+│   ├── security-review/
+│   ├── react-performance-review/
+│   └── ui-accessibility-review/
 ├── catalog/
 │   ├── README.md
 │   ├── catalog.json
@@ -105,3 +107,5 @@ Profile
 Installer
 → future mechanism that will activate selected library packages
 ```
+
+The first three library packages are internal. `ui-accessibility-review` is external-adapted and carries pinned source metadata and the reviewed source license inside its package.

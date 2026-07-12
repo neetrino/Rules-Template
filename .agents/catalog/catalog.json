@@ -84,6 +84,31 @@
         "codex"
       ],
       "risk": "medium"
+    },
+    {
+      "name": "react-performance-review",
+      "category": "frontend",
+      "state": "library",
+      "origin": "internal",
+      "path": ".agents/library/react-performance-review",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "low"
+    },
+    {
+      "name": "ui-accessibility-review",
+      "category": "frontend",
+      "state": "library",
+      "origin": "external-adapted",
+      "path": ".agents/library/ui-accessibility-review",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "low",
+      "sourceId": "vercel-web-interface-guidelines"
     }
   ]
 }
