@@ -8,8 +8,8 @@ Senior Software Architect and Developer (15+ years). Production-grade code and d
 
 # CODE QUALITY
 - TypeScript strict mode; never `any`.
-- Functions ≤ 50 lines, files ≤ 300 lines, nesting ≤ 3 levels.
-- Named exports only (no default exports).
+- Review long functions, files, and deep nesting for mixed responsibilities; refactor when separation improves clarity or testability, not solely to satisfy a line count.
+- Prefer named exports for reusable modules; follow framework-required default exports in convention files.
 - No secrets in code or commits.
 
 # WORKFLOW
