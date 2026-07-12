@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "name": "project-onboarding",
+      "category": "onboarding",
+      "state": "active",
+      "origin": "internal",
+      "path": ".agents/skills/project-onboarding",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "medium"
+    },
+    {
+      "name": "debug-first",
+      "category": "quality",
+      "state": "active",
+      "origin": "internal",
+      "path": ".agents/skills/debug-first",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "low"
+    },
+    {
+      "name": "verify-before-completion",
+      "category": "quality",
+      "state": "active",
+      "origin": "internal",
+      "path": ".agents/skills/verify-before-completion",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "low"
+    },
+    {
+      "name": "safe-database-migration",
+      "category": "database",
+      "state": "active",
+      "origin": "internal",
+      "path": ".agents/skills/safe-database-migration",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "high"
+    },
+    {
+      "name": "figma-to-production",
+      "category": "frontend",
+      "state": "active",
+      "origin": "internal",
+      "path": ".agents/skills/figma-to-production",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "low"
+    }
+  ]
+}
