@@ -3,6 +3,7 @@
 This directory contains reusable AI workflows and documentation for maintaining the repository's Agent system.
 
 - [`skills/`](skills/) — active task workflows for AI agents.
+- [`catalog/`](catalog/) — Skill registry, composable profiles, and external source provenance.
 - [`system/ARCHITECTURE.md`](system/ARCHITECTURE.md) — Rules, Skills, and References architecture.
 - [`system/SKILL_AUTHORING_GUIDE.md`](system/SKILL_AUTHORING_GUIDE.md) — standards for creating and maintaining Skills.
 - [`system/SKILL_TRIGGER_TESTS.md`](system/SKILL_TRIGGER_TESTS.md) — positive and negative routing examples.
@@ -17,6 +18,14 @@ Cursor-specific coding rules
 Portable Agent Skills
 → .agents/skills/
 
+Curated Skill metadata and profiles
+→ .agents/catalog/
+
+Curated inactive Skills
+→ .agents/library/ (created only when the first real library Skill exists)
+
 Agent-system architecture and governance
 → .agents/system/
 ```
+
+Profile membership describes desired project composition. A package under `library/` remains inactive and undiscoverable until a future installer explicitly activates it.

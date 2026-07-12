@@ -20,6 +20,16 @@ Add or revise Skills according to [`SKILL_AUTHORING_GUIDE.md`](SKILL_AUTHORING_G
 
 Skill-local `references/` contain detailed knowledge needed only during that workflow. Repository-wide templates, operational checklists, examples, and platform materials remain under `docs/reference/`. References are not automatically applied as permanent Rules.
 
+## Catalog and lifecycle
+
+- `.agents/catalog/catalog.json` registers curated Skill metadata and activation state.
+- `.agents/catalog/profiles.json` composes project-oriented Skill sets through inheritance.
+- `.agents/catalog/sources.lock.json` records immutable provenance for accepted external Skills.
+- `.agents/skills/` contains active, agent-discoverable Skills.
+- `.agents/library/` contains curated inactive Skills. Their presence in a profile does not make them discoverable.
+
+Skill behavior remains in `SKILL.md`; catalog files do not duplicate workflow instructions. External Skills must pass [the intake policy](EXTERNAL_SKILL_POLICY.md) before catalog registration or installation.
+
 ## Decision guide
 
 | Question | Type |
@@ -37,16 +47,28 @@ Skill-local `references/` contain detailed knowledge needed only during that wor
 
 .agents/
 ├── README.md
-├── system/
-│   ├── ARCHITECTURE.md
-│   ├── SKILL_AUTHORING_GUIDE.md
-│   └── SKILL_TRIGGER_TESTS.md
-└── skills/
-    ├── project-onboarding/
-    ├── debug-first/
-    ├── verify-before-completion/
-    ├── safe-database-migration/
-    └── figma-to-production/
+├── skills/
+│   ├── project-onboarding/
+│   ├── debug-first/
+│   ├── verify-before-completion/
+│   ├── safe-database-migration/
+│   └── figma-to-production/
+├── library/
+│   ├── code-review/
+│   └── security-review/
+├── catalog/
+│   ├── README.md
+│   ├── catalog.json
+│   ├── profiles.json
+│   └── sources.lock.json
+└── system/
+    ├── ARCHITECTURE.md
+    ├── ROADMAP.md
+    ├── DECISIONS.md
+    ├── PHASE_STATUS.md
+    ├── EXTERNAL_SKILL_POLICY.md
+    ├── SKILL_AUTHORING_GUIDE.md
+    └── SKILL_TRIGGER_TESTS.md
 
 docs/
 ├── BRIEF.md
@@ -66,4 +88,20 @@ Run the dependency-free structural validator after changing Rules, Skills, or th
 node scripts/validate-agent-config.mjs
 ```
 
-The validator checks required Skill and Rule metadata, Skill name uniqueness, canonical paths, and local Markdown links. Warnings identify maintainability concerns without failing validation.
+The validator checks Skill and Rule metadata, catalog registration, profile inheritance, external provenance, governance files, canonical paths, and local Markdown links. Warnings identify maintainability concerns without failing validation.
+
+## Composition versus activation
+
+```text
+Active
+→ package exists in .agents/skills/ and is discoverable now
+
+Library
+→ curated package exists in .agents/library/ but is inactive
+
+Profile
+→ desired composition of active and library packages
+
+Installer
+→ future mechanism that will activate selected library packages
+```

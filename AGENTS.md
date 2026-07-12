@@ -21,6 +21,9 @@ Cursor coding standards
 Reusable workflows
 → .agents/skills/
 
+Skill catalog and profiles
+→ .agents/catalog/
+
 Agent-system documentation
 → .agents/system/
 ```
