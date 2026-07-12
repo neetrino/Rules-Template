@@ -6,12 +6,12 @@ alwaysApply: false
 
 # CI/CD
 
-- **Fail fast:** lint → typecheck → test → build; block merge on red CI.
-- **Reproducible:** `pnpm install --frozen-lockfile`; commit lockfile; Node/pnpm versions pinned in CI.
+- **Fail fast:** run the repository's relevant formatting, linting, type, test, and build checks in a useful order; block merge on required red checks.
+- **Reproducible:** use the detected package manager's frozen/locked install mode, commit its lockfile, and pin runtime/tool versions where the project requires them.
 - **Concurrency:** cancel in-progress runs for the same PR/branch where useful.
 - **Secrets:** only GitHub Actions secrets / OIDC — never in workflow YAML or logs.
-- **Stages:** unit + integration (with DB service if needed); optional e2e on critical paths; `pnpm audit` (or equivalent) in CI.
-- **Deploy:** migrations strategy per `06-database.mdc` — do not hand-delete failed migrations; backup before risky changes.
+- **Stages:** select unit, integration, and E2E jobs by project risk; use the ecosystem's dependency audit or scanner.
+- **Deploy:** migrations strategy per `06-database.mdc`; use [`safe-database-migration`](../../.agents/skills/safe-database-migration/SKILL.md) for schema changes.
 - **Managed hosts (Vercel, Railway, Render, Fly):** use platform env + health checks; full Dockerfile/K8s only when self-hosting.
 - **Feature flags:** document each flag; remove after full rollout; log which variant served.
 - **Dependency policy:** patch quickly; minor after changelog review; major as planned work with tests.

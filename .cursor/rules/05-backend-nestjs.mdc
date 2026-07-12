@@ -8,8 +8,8 @@ alwaysApply: false
 
 - **Thin controllers** — HTTP mapping + DTO validation only; business logic in **services**.
 - **Modules** per domain; clear boundaries; avoid circular module imports.
-- **DTOs** + `class-validator` / `class-transformer` for all inputs.
+- Validate all external inputs with the project's DTO and validation approach (`class-validator` / `class-transformer` when selected).
 - **Guards** for authz; **Interceptors** for logging/transform; **Exception filters** for consistent errors.
 - **Swagger** (`@nestjs/swagger`) if API is documented publicly.
-- **ConfigModule** for env — validate schema at startup (e.g. Joi/Zod).
+- Use the project's configuration layer for env and validate required configuration at startup.
 - **No secrets** in code; use `ConfigService` / env.

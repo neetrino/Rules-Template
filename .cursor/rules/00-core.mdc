@@ -9,7 +9,7 @@ alwaysApply: true
 Other `.mdc` files apply by **globs** and task. If a rule seems missing, check the file type matches that rule’s globs.
 
 For greenfield setup, project sizing, and TECH_CARD preparation, use the
-[`project-onboarding`](../skills/project-onboarding/SKILL.md) skill. Do not rerun onboarding during ordinary development tasks.
+[`project-onboarding`](../../.agents/skills/project-onboarding/SKILL.md) skill. Do not rerun onboarding during ordinary development tasks.
 
 ## Each task
 
@@ -18,41 +18,42 @@ Understand the ask → inspect existing code → propose for large/risky changes
 ## Never
 
 - **TS:** `any` (unless documented exception).
-- **UI:** inline styles (use CSS/Tailwind classes only).
-- **Magic numbers** — use named constants.
-- **Duplication** — DRY.
-- **Size:** functions > 50 lines; files > 300 lines; nesting > 3 levels (use early returns).
+- **UI:** bypassing the project's styling system with unrelated ad-hoc patterns.
+- **Maintainability:** meaningful duplication, mixed responsibilities, or deeply nested control flow left without review.
 - **Prod:** `console.log` — use logger.
 - **Dead:** commented-out code — remove.
 - **Secrets** in code/commits — env only.
 - **SQL:** no string-concatenated user input; parameterized / prepared only.
 - **eval** and similar — never.
 - **CORS/CSRF off** without explicit approval.
-- **Architecture / deps / public API** changes without agreement or strong rationale.
+- **Architecture / stack / public API** changes without agreement or an explicitly approved task.
 - **Remove tests** or **ignore lint** to “pass” CI.
 
 ## Always
 
 - TypeScript **strict**; explicit types at boundaries.
-- **Named exports** (no default exports).
+- Prefer **named exports** for reusable application modules and components. Follow framework-required exports in route, page, layout, configuration, and other convention files.
 - **Validate** external input at boundaries.
 - **Handle errors** with logging; no silent swallow in production paths.
 - **JSDoc** on exported public APIs where non-obvious.
 
-## Structure
+## Maintainability
 
 - One file, one responsibility.
-- Group by **feature**, not by file type only.
-- Shared UI/utils in `shared` / `common`.
-- Constants in dedicated files.
+- Review long functions and files for mixed responsibilities. Refactor when separation improves cohesion, readability, testability, or ownership; do not split solely to meet a line-count threshold.
+- Avoid meaningful duplication, but do not introduce abstractions for coincidentally similar code.
+- Name domain, configuration, timeout, limit, and other non-obvious values. Keep obvious local UI or algorithm values inline when extracting them would reduce clarity.
+- Follow the existing approved project structure; use feature grouping and shared modules only where the architecture calls for them.
 
 ## Decisions
 
-**Hard (apply without asking):** security baseline (argon2 for passwords, validate input, helmet/CORS where applicable), TS strict, named exports, error handling, `pnpm` + Prisma per TECH_CARD.
+**Hard (apply without asking):** protect secrets, validate external input, use secure password hashing when passwords are stored, preserve security controls, keep TypeScript strict where TypeScript is used, and handle errors without leaking sensitive internals.
+
+**Technology precedence:** explicit approved task or migration decision → approved `docs/TECH_CARD.md` → existing project implementation → template recommendation → generic fallback. Preserve the existing implementation unless the task or approved TECH_CARD explicitly requires a migration.
 
 **Adaptive (ask before picking values):** timeouts, pool limits, rate limits, cache TTL — explain options and tradeoffs; never silently use a generic default like `statement_timeout=30s` without team alignment.
 
-**Autonomous:** naming, internal file layout, small refactors (&lt;50 lines), obvious bugfixes, formatting.
+**Autonomous:** naming, local implementation details, low-risk refactors, obvious bugfixes, and formatting that follow existing project decisions.
 
 **Requires approval:** architecture, stack/libraries, folder layout, DB schema, removing/renaming public API, business-logic changes.
 
@@ -88,6 +89,6 @@ Full DoD/PR/release checklists: [`docs/reference/Check/Quality/project-quality-c
 | CI/CD | `17-cicd.mdc` |
 | i18n | `20-i18n.mdc` |
 
-Workflow: [`project-onboarding`](../skills/project-onboarding/SKILL.md). Platform how-tos and other long-form material live under `docs/reference/`.
+Workflows: [`.agents/skills/`](../../.agents/skills/). Platform how-tos and other long-form material live under `docs/reference/`.
 
 **Version:** 3.0 · **Date:** 2026-04-02

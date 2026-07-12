@@ -2,19 +2,23 @@
 
 ## Purpose
 
-The system separates permanent engineering norms from repeatable workflows and optional detail. This keeps everyday context focused without losing the existing standards or supporting material.
+Separate permanent coding standards from repeatable task workflows and optional detailed knowledge. This keeps everyday context focused while making procedures portable across supported agents.
 
 ## Rules
 
-Rules define how code must always be written or changed, globally or for matching files and tasks. They live in `.cursor/rules/` and apply through `alwaysApply`, `globs`, or task relevance. Technology, architecture, security, testing, and delivery standards remain Rules because they constrain implementation continuously rather than describe a one-time workflow.
+Cursor-specific Rules live in `.cursor/rules/*.mdc`. They define how code must be written or changed globally, for matching files, or when a task makes the Rule relevant. Technology, architecture, security, testing, and delivery constraints remain Rules because they continuously govern implementation.
+
+Empty `globs` can be intentional for task-relevant Rules; it is not automatically a configuration error. Rules should remain project-aware and must not turn template technology recommendations into universal requirements.
 
 ## Skills
 
-Skills describe how to complete a particular kind of task from start to finish. Each lives at `.cursor/skills/<skill-name>/SKILL.md` with minimal `name` and `description` frontmatter. Add a Skill when a repeatable process has a clear trigger, ordered phases, and a completion outcome; link to existing Rules instead of copying their standards.
+Portable task workflows live only in `.agents/skills/<skill-name>/SKILL.md`. Both Cursor and Codex can discover this Agent Skills layout. Each Skill has one job, clear trigger and non-trigger boundaries, ordered work, verification, stop conditions where needed, and an output contract.
+
+Add or revise Skills according to [`SKILL_AUTHORING_GUIDE.md`](SKILL_AUTHORING_GUIDE.md). Do not keep a duplicate `.cursor/skills/` tree.
 
 ## References
 
-References hold criteria, detailed folder trees, long templates, examples, checklists, and platform-specific instructions that are opened only when needed. Keeping them outside automatically applied Rules reduces permanent context while preserving depth for the workflow that needs it.
+Skill-local `references/` contain detailed knowledge needed only during that workflow. Repository-wide templates, operational checklists, examples, and platform materials remain under `docs/reference/`. References are not automatically applied as permanent Rules.
 
 ## Decision guide
 
@@ -28,18 +32,32 @@ References hold criteria, detailed folder trees, long templates, examples, check
 
 ```text
 .cursor/
-├── rules/
-│   ├── 00-core.mdc
-│   ├── 01-architecture.mdc
-│   ├── 03-typescript.mdc … 17-cicd.mdc
-│   └── 20-i18n.mdc
+└── rules/
+    └── *.mdc
+
+.agents/
 └── skills/
-    └── project-onboarding/
-        ├── SKILL.md
-        └── references/
-            ├── project-sizing.md
-            └── project-sizes/
-                ├── size-a-small.md
-                ├── size-b-medium.md
-                └── size-c-large.md
+    ├── project-onboarding/
+    ├── debug-first/
+    ├── verify-before-completion/
+    ├── safe-database-migration/
+    └── figma-to-production/
+
+docs/
+├── RULES_SKILLS_ARCHITECTURE.md
+├── SKILL_AUTHORING_GUIDE.md
+└── SKILL_TRIGGER_TESTS.md
+
+scripts/
+└── validate-agent-config.mjs
 ```
+
+## Validation
+
+Run the dependency-free structural validator after changing Rules, Skills, or their local links:
+
+```bash
+node scripts/validate-agent-config.mjs
+```
+
+The validator checks required Skill and Rule metadata, Skill name uniqueness, canonical paths, and local Markdown links. Warnings identify maintainability concerns without failing validation.

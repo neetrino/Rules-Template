@@ -1,7 +1,7 @@
 # Նախագծի տեխզադրանք
 
 > Լրացրու՛ այս ֆայլը զարգացումը սկսելուց առաջ։
-> Լրացնելուց հետո — ուղարկի՛ր AI-ասիստենտին անալիզի և մեկնարկի համար [`project-onboarding` Skill](../.cursor/skills/project-onboarding/SKILL.md)-ի համաձայն։
+> Լրացնելուց հետո — ուղարկի՛ր AI-ասիստենտին անալիզի և մեկնարկի համար [`project-onboarding` Skill](../.agents/skills/project-onboarding/SKILL.md)-ի համաձայն։
 
 ---
 
