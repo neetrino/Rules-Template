@@ -1,9 +1,3 @@
----
-description: Size B — medium projects (feature-based modules, fuller docs and tests).
-globs: []
-alwaysApply: false
----
-
 # Size B (medium)
 
 - **When:** ~3–6 months, small team, many features, possible separate API later.

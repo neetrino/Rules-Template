@@ -1,9 +1,3 @@
----
-description: Size C — large monorepo (apps + packages, ADRs, strict package boundaries).
-globs: []
-alwaysApply: false
----
-
 # Size C (large)
 
 - **When:** 6+ months, multiple teams, many features, scaling and clear module boundaries required.

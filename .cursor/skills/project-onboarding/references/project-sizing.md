@@ -1,12 +1,6 @@
----
-description: How to choose project size (A/B/C). Read when size is unset or must be revised.
-globs: []
-alwaysApply: false
----
-
 # Project size decision
 
-Read when `00-core.mdc` still says size is **not set**, or the team asks to revisit size.
+Open this reference while onboarding a project whose size is not set, or when the team explicitly asks to revisit the selected size.
 
 ## Criteria (rule of thumb)
 
@@ -22,6 +16,10 @@ State: timeline, complexity, feature count → recommended **A/B/C** + **folder 
 
 ## After approval
 
-Update the project size line in **`00-core.mdc`** (replace the “NOT SET” placeholder with e.g. `Size: B — medium, layout: feature-based`).
+Record the approved size and layout in `docs/TECH_CARD.md`. Update it if the team later approves a different size.
 
-Details and folder trees: [`project-sizes/size-a-small.mdc`](project-sizes/size-a-small.mdc), [`size-b-medium.mdc`](project-sizes/size-b-medium.mdc), [`size-c-large.mdc`](project-sizes/size-c-large.mdc).
+Details, examples, architectural recommendations, and constraints:
+
+- [`project-sizes/size-a-small.md`](project-sizes/size-a-small.md)
+- [`project-sizes/size-b-medium.md`](project-sizes/size-b-medium.md)
+- [`project-sizes/size-c-large.md`](project-sizes/size-c-large.md)

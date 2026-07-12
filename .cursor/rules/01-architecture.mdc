@@ -11,7 +11,7 @@ alwaysApply: false
 - **Presentation** (UI/API) → **Application** (use cases/services) → **Domain** (entities/rules) → **Infrastructure** (DB, external APIs).
 - Dependencies point **inward** — domain does not import from infrastructure.
 
-## By project size (from `TECH_CARD` / `99-project-size.mdc`)
+## By project size (from `TECH_CARD` / [`project-sizing`](../skills/project-onboarding/references/project-sizing.md))
 
 - **A (small):** `src/app`, `components`, `lib`, `types` — simple tree.
 - **B (medium):** `features/*` with `components`, `hooks`, `services`, `types`; `shared/` for UI and utils.

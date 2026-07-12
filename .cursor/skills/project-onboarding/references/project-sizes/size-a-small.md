@@ -1,9 +1,3 @@
----
-description: Size A — small projects (simple layout, minimal docs).
-globs: []
-alwaysApply: false
----
-
 # Size A (small)
 
 - **When:** ~1–3 months, 1–2 devs, low–medium complexity, no need to scale to many teams.
