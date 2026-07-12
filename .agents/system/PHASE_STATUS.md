@@ -3,7 +3,7 @@
 Current phase:
 Phase 3C Batch 1B — Performance and Accessibility Skills
 
-Current branch:
+Implementation branch:
 `codex/phase-3c-batch-1b`
 
 Status:

@@ -62,7 +62,7 @@ Outcome:
 - external provenance hardening;
 - profile state distinction.
 
-### Batch 1B — External adapted Skills
+### Batch 1B — Performance and Accessibility Skills
 
 Status: completed
 

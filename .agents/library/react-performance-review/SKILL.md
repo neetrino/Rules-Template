@@ -1,6 +1,6 @@
 ---
 name: react-performance-review
-description: Review React and Next.js implementation for high-impact performance risks such as request waterfalls, excessive client JavaScript, unnecessary server-to-client serialization, inefficient rendering and costly rerenders. Use for explicit React or Next.js performance investigations, slow routes, large bundles, rendering regressions or optimization work. Do not use for ordinary component implementation, isolated styling changes, generic completion validation or measured browser performance audits.
+description: Review React and Next.js implementation for high-impact performance risks such as slow routes, large bundles, request waterfalls, excessive client JavaScript, unnecessary server-to-client serialization, rendering inefficiency and costly rerenders. Use for explicit React or Next.js performance reviews, optimization assessments, known performance bottlenecks, or investigations after reproduction or root-cause evidence. Do not use for newly reported performance regressions or unexpected slowness whose root cause is still unknown, defect diagnosis, ordinary component implementation, isolated styling changes, generic completion validation or measured browser performance audits.
 ---
 
 # React performance review
@@ -15,7 +15,7 @@ Use for explicit React/Next.js performance reviews, slow routes, large client bu
 
 ## Do not use when
 
-Do not use for ordinary component or Figma implementation, copy/CSS changes, generic completion validation, generic code review, browser Core Web Vitals measurement, or non-React applications. Use `figma-to-production`, `code-review`, or `verify-before-completion` for their respective workflows. A future `web-performance-audit` will own measured browser runtime performance.
+Do not use as the first workflow for a newly reported slowdown or performance regression with an unknown cause; use `debug-first` to reproduce and identify the root cause first. Do not use for ordinary component or Figma implementation, copy/CSS changes, generic completion validation, generic code review, browser Core Web Vitals measurement, or non-React applications. Use `figma-to-production`, `code-review`, or `verify-before-completion` for their respective workflows. A future `web-performance-audit` will own measured browser runtime performance.
 
 ## Inputs
 
