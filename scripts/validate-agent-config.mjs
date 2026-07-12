@@ -224,6 +224,13 @@ function validateExternalProvenance(entry, source) {
   const licenseFile = join(directory, 'LICENSE.source.txt');
   if (!existsSync(sourceFile)) report(errors, sourceFile, `External Skill ${entry.name} requires SOURCE.md.`);
   if (!existsSync(licenseFile)) report(errors, licenseFile, `External Skill ${entry.name} requires LICENSE.source.txt.`);
+  else {
+    try {
+      if (!readSource(licenseFile).trim()) report(errors, licenseFile, `External Skill ${entry.name} LICENSE.source.txt must not be empty.`);
+    } catch (error) {
+      report(errors, licenseFile, `External Skill ${entry.name} LICENSE.source.txt is not readable: ${error.message}`);
+    }
+  }
   if (!existsSync(sourceFile)) return;
   const fields = readProvenanceFields(sourceFile);
   const expected = new Map([
@@ -236,8 +243,8 @@ function validateExternalProvenance(entry, source) {
     ['Review date', source.reviewedAt],
     ['Imported as', source.importedAs],
     ['Adaptation type', source.adaptation],
-    ['Adaptation summary', source.adaptationNotes],
   ]);
+  if (source.adaptation === 'adapted') expected.set('Adaptation summary', source.adaptationNotes);
   for (const [label, value] of expected) {
     if (!fields.has(label)) report(errors, sourceFile, `Missing provenance field: ${label}.`);
     else if (fields.get(label) !== value) report(errors, sourceFile, `${label} does not match sources.lock.json.`);

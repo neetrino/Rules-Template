@@ -1,10 +1,10 @@
 # Agent system phase status
 
 Current phase:
-Phase 3C Batch 1A — Internal Skill Library and Provenance Hardening
+Phase 3C Batch 1B — Performance and Accessibility Skills
 
 Current branch:
-`codex/phase-3c-batch-1`
+`codex/phase-3c-batch-1b`
 
 Status:
 Completed
@@ -28,17 +28,27 @@ Phase 3C Batch 1A deliverables:
 - [x] Internal catalog/profile integration
 - [x] Batch 1A validation
 
+Phase 3C Batch 1B deliverables:
+
+- [x] Internal `react-performance-review` library package
+- [x] External-adapted `ui-accessibility-review` library package
+- [x] Pinned MIT source provenance and local source license
+- [x] Frontend profile and trigger-test integration
+- [x] Research and governance decisions updated
+- [x] Batch 1B validation
+
 Summary:
 
 - Active Skills: 5
-- Library Skills: 2
-- Catalog entries: 7
+- Library Skills: 4
+- Catalog entries: 9
 - Profiles: 6
-- External sources: 0
-- External adapted Skills: 0
+- External sources: 1
+- External adapted Skills: 1
+- Internal library Skills: 3
 
 Next:
-Phase 3C Batch 1B — resolve external source licensing and implement external adapted Skills.
+Evaluate Batch 1 Skills on real projects, then begin Phase 3C Batch 2.
 
 Last validation:
-`node scripts/validate-agent-config.mjs` — 5 active Skills, 2 library Skills, 18 Rules, 7 catalog entries, 6 profiles, 0 external sources; 0 errors, 0 warnings.
+`node scripts/validate-agent-config.mjs` — 5 active Skills, 4 library Skills, 18 Rules, 9 catalog entries, 6 profiles, 1 external source; 0 errors, 0 warnings.

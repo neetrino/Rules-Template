@@ -16,7 +16,9 @@
         "core"
       ],
       "skills": [
-        "figma-to-production"
+        "figma-to-production",
+        "react-performance-review",
+        "ui-accessibility-review"
       ]
     },
     "backend": {

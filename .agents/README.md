@@ -22,10 +22,17 @@ Curated Skill metadata and profiles
 → .agents/catalog/
 
 Curated inactive Skills
-→ .agents/library/ (created only when the first real library Skill exists)
+→ .agents/library/
 
 Agent-system architecture and governance
 → .agents/system/
 ```
 
 Profile membership describes desired project composition. A package under `library/` remains inactive and undiscoverable until a future installer explicitly activates it.
+
+Current library packages:
+
+- `code-review` — internal.
+- `security-review` — internal.
+- `react-performance-review` — internal.
+- `ui-accessibility-review` — external-adapted with pinned provenance.

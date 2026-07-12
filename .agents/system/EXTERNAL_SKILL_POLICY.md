@@ -60,6 +60,8 @@ Use `external-vendored` only when the accepted package remains materially faithf
 
 Accepted external packages require `licenseReviewed: true`, exact applicable source license text in `LICENSE.source.txt`, and deterministic provenance fields in `SOURCE.md` that match Source Lock. Adapted sources require meaningful `adaptationNotes`.
 
+Reviewing a source for research does not require Source Lock registration when no content, files, examples, or taxonomy are copied or materially adapted. The research decision must still be recorded, and this exception does not relax license requirements for any external content that enters a package.
+
 ## No direct installation
 
 External Skills must not be copied directly into `.agents/skills/` before review and catalog registration. Accepted external Skills enter `.agents/library/` first unless activation is separately justified.
