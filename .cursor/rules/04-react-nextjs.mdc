@@ -6,10 +6,10 @@ alwaysApply: false
 
 # React and Next.js
 
-- **Server Components by default** — add `'use client'` only when you need hooks, browser APIs, or event handlers.
-- **Named exports** for components; no default exports for route components if project forbids (see `00-core.mdc`).
+- **Server Components by default** — add `'use client'` at the smallest practical boundary when hooks, browser APIs, event handlers, or interactive client state require it. Do not mark an entire tree as client code to work around a local issue.
+- Prefer **named exports** for reusable components; follow Next.js default-export contracts for pages, layouts, and other convention files.
 - **Colocate** feature code; avoid prop-drilling hell — use composition or context sparingly.
-- **Server state** — fetch on server or React Query on client per `16-state-management.mdc`.
+- **Server state** — fetch on the server or use the approved client data library per `16-state-management.mdc`.
 - **`next/image`** for images; **`next/link`** for navigation.
 - **Metadata** (`generateMetadata` / static) for SEO where applicable.
 - **Loading / error / not-found** UI for route segments.

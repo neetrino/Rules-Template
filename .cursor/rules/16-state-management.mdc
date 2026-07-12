@@ -1,13 +1,13 @@
 ---
-description: State — server vs client, React Query, forms, URL state.
+description: State management — choose server, URL, form, local, or shared client state according to ownership and project conventions.
 globs: ["**/*.tsx", "**/hooks/**", "**/store/**", "**/features/**"]
 alwaysApply: false
 ---
 
 # State management
 
-- **Server state** — TanStack Query (or project standard) for API data; caching, invalidation, retries.
-- **Client UI state** — React state / Zustand (or project standard) — keep minimal.
-- **Forms** — React Hook Form + Zod (or project standard).
-- **URL state** — `useSearchParams` / `nuqs` for shareable filters.
+- **Server state** — use server fetching or the approved client data library; define caching, invalidation, and retry behavior deliberately.
+- **Client UI state** — start with local framework state; use the approved shared store only when state truly spans owners.
+- **Forms** — use the project's form and validation approach; avoid adding a library for trivial forms without need.
+- **URL state** — use the router's query APIs or the approved helper for shareable filters and navigation state.
 - **Do not** duplicate server data in global stores; **selectors** for derived data.

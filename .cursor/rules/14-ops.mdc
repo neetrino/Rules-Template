@@ -18,10 +18,9 @@ alwaysApply: false
 
 ## Reliability
 
-- **Timeouts** on every outbound HTTP, DB statement (where configurable), and long work. Never unbounded waits.
-  - Internal API: ~5–10s; external APIs: ~10–30s; DB: set `statement_timeout` / pool timeouts per stack docs (see `06-database.mdc`).
+- **Timeouts** on outbound HTTP, database work where configurable, and long-running operations. Choose values from workload, user experience, and provider constraints rather than universal defaults (see `06-database.mdc`).
 - **Retries** with exponential backoff + jitter for transient failures (429, 502–504). Cap retries; idempotent methods only for safe retries.
-- **Circuit breaker** (or bulkhead) for flaky third-party services — fail fast after threshold.
+- Consider a **circuit breaker** or bulkhead for high-impact flaky dependencies when simpler bounded failure handling is insufficient.
 - **Graceful shutdown**: drain connections, stop accepting new work, finish in-flight with timeout.
 - **Health checks**: lightweight `/health` or `/ready` — liveness vs readiness if needed; do not run heavy DB work on every ping unless required.
 - **Degradation**: return cached/stale or partial data for non-critical paths when dependencies fail; never leak internal errors to clients.
