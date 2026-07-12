@@ -36,6 +36,11 @@ Skill-local `references/` contain detailed knowledge needed only during that wor
     └── *.mdc
 
 .agents/
+├── README.md
+├── system/
+│   ├── ARCHITECTURE.md
+│   ├── SKILL_AUTHORING_GUIDE.md
+│   └── SKILL_TRIGGER_TESTS.md
 └── skills/
     ├── project-onboarding/
     ├── debug-first/
@@ -44,9 +49,10 @@ Skill-local `references/` contain detailed knowledge needed only during that wor
     └── figma-to-production/
 
 docs/
-├── RULES_SKILLS_ARCHITECTURE.md
-├── SKILL_AUTHORING_GUIDE.md
-└── SKILL_TRIGGER_TESTS.md
+├── BRIEF.md
+├── TECH_CARD.md
+├── 01-ARCHITECTURE.md
+└── reference/
 
 scripts/
 └── validate-agent-config.mjs
