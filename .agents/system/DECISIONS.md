@@ -69,3 +69,33 @@ Context: Repeating complete Skill lists across project types causes drift.
 Decision: Compose profiles through `extends` and keep only profile-specific Skills in direct lists.
 
 Consequences: Resolved Skill sets are deduplicated while profile intent remains clear.
+
+## D-008 — Curated Skills enter library before activation
+
+Status: accepted
+
+Context: Newly accepted workflows should not become project instructions automatically.
+
+Decision: Add new curated Skills to `.agents/library/` before any project activation.
+
+Consequences: Review and catalog registration remain separate from discoverability.
+
+## D-009 — External adaptations use local references
+
+Status: accepted
+
+Context: Runtime remote prompt fetching can drift away from reviewed content.
+
+Decision: Bundle stable reviewed references locally for external-adapted Skills instead of fetching floating instructions at runtime.
+
+Consequences: Adapted packages are reproducible and remain tied to immutable provenance.
+
+## D-010 — Profiles describe desired composition
+
+Status: accepted
+
+Context: Profiles need to describe active and curated inactive workflows before an installer exists.
+
+Decision: Profiles may reference active and library Skills; membership does not activate a library package.
+
+Consequences: Profile resolution must expose package state and reject deprecated Skills.

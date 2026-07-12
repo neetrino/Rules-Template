@@ -91,3 +91,39 @@ These routing cases review Skill descriptions for clear positive and negative bo
 | “Change this heading from Plans to Pricing.” | No `figma-to-production` | Isolated copy edit. |
 | “Make the existing divider two pixels thicker.” | No `figma-to-production` | Simple styling change without design analysis. |
 | “The mobile layout suddenly overlaps after yesterday’s commit; diagnose it.” | `debug-first` | Regression diagnosis is primary. |
+
+## code-review
+
+### Positive
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Review the changes between main and this branch for correctness and regression risks.” | `code-review` | Diff review before merge. |
+| “Review this pull request against the approved requirements.” | `code-review` | Independent requirements assessment. |
+| “Inspect this Git diff and report actionable findings before merge.” | `code-review` | Evidence-based changed-code review. |
+
+### Negative
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “The login endpoint returns 500. Find and fix the cause.” | `debug-first` | Reported defect requires diagnosis. |
+| “Run the relevant tests and build before reporting completion.” | `verify-before-completion` | Execution of checks, not review. |
+| “Audit authentication and tenant authorization for security weaknesses.” | `security-review` | Dedicated security assessment. |
+
+## security-review
+
+### Positive
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Audit this authentication flow for realistic security vulnerabilities.” | `security-review` | Explicit security audit. |
+| “Review tenant authorization and verify that users cannot access another tenant's records.” | `security-review` | Object and tenant authorization boundary. |
+| “Perform a security review of this webhook endpoint and signature verification.” | `security-review` | Security-sensitive external entry point. |
+
+### Negative
+
+| Prompt | Expected | Reason |
+| --- | --- | --- |
+| “Review this PR for general correctness.” | `code-review` | General review, not dedicated security scope. |
+| “Add a normal profile field.” | No `security-review` | Ordinary feature without a material security boundary. |
+| “The endpoint returns an unexpected 500.” | `debug-first` | Defect diagnosis is primary. |

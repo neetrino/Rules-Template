@@ -66,7 +66,7 @@ Active Skill
 → present under .agents/skills/
 ```
 
-Phase 3A defines metadata only; no profile installer exists yet.
+No profile installer exists yet. Profile membership describes desired composition and does not activate a library package.
 
 ## Profiles
 
@@ -77,6 +77,21 @@ Phase 3A defines metadata only; no profile installer exists yet.
 - `greenfield` extends `fullstack` with project onboarding.
 
 Inheritance uses `extends`; inherited Skills are not repeated in child lists.
+
+Profiles may reference `active` and `library` entries, but never `deprecated` entries.
+
+## Source Lock requirements
+
+Curated external sources require an immutable commit, verified license, real non-future review date, and an adaptation explanation when adapted. `licenseReviewed` must be `true`.
+
+Every external library package must contain:
+
+```text
+SOURCE.md
+LICENSE.source.txt
+```
+
+`SOURCE.md` uses deterministic `Field: value` lines that must match `sources.lock.json`. An external source without verifiable applicable license text is not registered or copied into the library.
 
 ## External Skill rule
 

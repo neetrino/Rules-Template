@@ -27,3 +27,5 @@ Curated inactive Skills
 Agent-system architecture and governance
 → .agents/system/
 ```
+
+Profile membership describes desired project composition. A package under `library/` remains inactive and undiscoverable until a future installer explicitly activates it.

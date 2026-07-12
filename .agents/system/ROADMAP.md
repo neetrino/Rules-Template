@@ -44,11 +44,34 @@ Outcome:
 
 ## Phase 3B — External Skill research
 
-Status: planned
+Status: completed
 
 ## Phase 3C — Curated Skill library
 
-Status: planned
+Status: in progress
+
+### Batch 1A — Internal Skill library and provenance hardening
+
+Status: completed
+
+Outcome:
+
+- `code-review` internal library Skill;
+- `security-review` internal library Skill;
+- library package validation;
+- external provenance hardening;
+- profile state distinction.
+
+### Batch 1B — External adapted Skills
+
+Status: blocked
+
+Blocker: Verified and reproducible source licensing for `react-performance-review`.
+
+Planned:
+
+- `react-performance-review`;
+- `ui-accessibility-review`.
 
 ## Phase 3D — Profile refinement
 

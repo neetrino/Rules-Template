@@ -60,6 +60,30 @@
         "codex"
       ],
       "risk": "low"
+    },
+    {
+      "name": "code-review",
+      "category": "quality",
+      "state": "library",
+      "origin": "internal",
+      "path": ".agents/library/code-review",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "low"
+    },
+    {
+      "name": "security-review",
+      "category": "security",
+      "state": "library",
+      "origin": "internal",
+      "path": ".agents/library/security-review",
+      "compatibility": [
+        "cursor",
+        "codex"
+      ],
+      "risk": "medium"
     }
   ]
 }

@@ -58,6 +58,8 @@ If an external Skill is materially changed, set its catalog origin to `external-
 
 Use `external-vendored` only when the accepted package remains materially faithful to the reviewed source.
 
+Accepted external packages require `licenseReviewed: true`, exact applicable source license text in `LICENSE.source.txt`, and deterministic provenance fields in `SOURCE.md` that match Source Lock. Adapted sources require meaningful `adaptationNotes`.
+
 ## No direct installation
 
 External Skills must not be copied directly into `.agents/skills/` before review and catalog registration. Accepted external Skills enter `.agents/library/` first unless activation is separately justified.

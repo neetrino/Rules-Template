@@ -26,7 +26,7 @@ Skill-local `references/` contain detailed knowledge needed only during that wor
 - `.agents/catalog/profiles.json` composes project-oriented Skill sets through inheritance.
 - `.agents/catalog/sources.lock.json` records immutable provenance for accepted external Skills.
 - `.agents/skills/` contains active, agent-discoverable Skills.
-- `.agents/library/` is reserved for curated inactive Skills and is created only when the first real library Skill exists.
+- `.agents/library/` contains curated inactive Skills. Their presence in a profile does not make them discoverable.
 
 Skill behavior remains in `SKILL.md`; catalog files do not duplicate workflow instructions. External Skills must pass [the intake policy](EXTERNAL_SKILL_POLICY.md) before catalog registration or installation.
 
@@ -53,7 +53,9 @@ Skill behavior remains in `SKILL.md`; catalog files do not duplicate workflow in
 │   ├── verify-before-completion/
 │   ├── safe-database-migration/
 │   └── figma-to-production/
-├── library/                  # created with the first real inactive Skill
+├── library/
+│   ├── code-review/
+│   └── security-review/
 ├── catalog/
 │   ├── README.md
 │   ├── catalog.json
@@ -87,3 +89,19 @@ node scripts/validate-agent-config.mjs
 ```
 
 The validator checks Skill and Rule metadata, catalog registration, profile inheritance, external provenance, governance files, canonical paths, and local Markdown links. Warnings identify maintainability concerns without failing validation.
+
+## Composition versus activation
+
+```text
+Active
+→ package exists in .agents/skills/ and is discoverable now
+
+Library
+→ curated package exists in .agents/library/ but is inactive
+
+Profile
+→ desired composition of active and library packages
+
+Installer
+→ future mechanism that will activate selected library packages
+```
