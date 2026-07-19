@@ -1,12 +1,12 @@
 ---
-description: Security — secrets, auth, validation, headers, CORS. Human-run checklist: docs/reference/Check/Security/0 Security List.md
+description: Security — secrets, auth, validation, headers, CORS. Human-run checklist: docs/reference/Check/Security/0-security-checklist.md
 globs: ["**/auth/**", "**/api/**", "**/middleware.ts", "**/middleware.tsx", "**/*.env*", "**/middleware/**"]
 alwaysApply: false
 ---
 
 # Security
 
-**Operational checklist (panels, WAF, MFA, backups):** read when auditing — [`docs/reference/Check/Security/0 Security List.md`](../../docs/reference/Check/Security/0%20Security%20List.md).
+**Operational checklist (panels, WAF, MFA, backups):** read when auditing — [`docs/reference/Check/Security/0-security-checklist.md`](../../docs/reference/Check/Security/0-security-checklist.md).
 
 ## Never
 
