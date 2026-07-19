@@ -59,6 +59,7 @@
 *Сначала 🤖, в конце 👤*
 
 * [ ] 🤖 **5.3** .env in .gitignore, no secrets in repo/code (CI/Repo)
+* [ ] 🤖👤 **5.4** Secret scanning: gitleaks in CI и/или GitHub Secret Scanning + Push protection
 * [ ] 👤 **5.1** Secrets only in env, separated by envs (Vercel/CI)
 * [ ] 👤 **5.2** Rotation runbook exists (Docs)
 
