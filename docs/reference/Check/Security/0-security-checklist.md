@@ -7,7 +7,7 @@
 
 ---
 
-## 1. Edge / Network — [[1 Edge-Network защита (периметр)]]
+## 1. Edge / Network — [1-edge-network.md](1-edge-network.md)
 *Сначала 🤖, в конце 👤*
 
 * [ ] 🤖 **1.5** Security headers: X-Content-Type-Options, X-Frame-Options, CSP baseline (Code/Vercel)
@@ -18,7 +18,7 @@
 
 ---
 
-## 2. Auth + Sessions — [[2 Auth + Sessions (самая любимая точка атаки)]]
+## 2. Auth + Sessions — [2-auth-sessions.md](2-auth-sessions.md)
 *Сначала 🤖, в конце 👤*
 
 * [ ] 🤖 **2.2** Secure cookies + session TTL/rotation (Clerk/Auth.js)
@@ -31,7 +31,7 @@
 
 ---
 
-## 3. API безопасность — [[3 API безопасность (Next API - Nest)]]
+## 3. API безопасность — [3-api-security.md](3-api-security.md)
 *Всё в коде 🤖*
 
 * [ ] 🤖 **3.1** Input validation (Code)
@@ -45,7 +45,7 @@
 
 ---
 
-## 4. Data / DB (Neon) — [[4 Data-DB (Neon Postgres)]]
+## 4. Data / DB (Neon) — [4-data-db.md](4-data-db.md)
 *Сначала 🤖, в конце 👤*
 
 * [ ] 🤖 **4.2** DB pooling + connection limits (Neon/Code)
@@ -55,16 +55,17 @@
 
 ---
 
-## 5. Secrets & Config — [[5 Secrets & Config hygiene]]
+## 5. Secrets & Config — [5-secrets-config.md](5-secrets-config.md)
 *Сначала 🤖, в конце 👤*
 
 * [ ] 🤖 **5.3** .env in .gitignore, no secrets in repo/code (CI/Repo)
+* [ ] 🤖👤 **5.4** Secret scanning: gitleaks in CI и/или GitHub Secret Scanning + Push protection
 * [ ] 👤 **5.1** Secrets only in env, separated by envs (Vercel/CI)
 * [ ] 👤 **5.2** Rotation runbook exists (Docs)
 
 ---
 
-## 6. Observability — [[6 Observability (иначе ты слепой)]]
+## 6. Observability — [6-observability.md](6-observability.md)
 *Сначала 🤖, в конце 👤*
 
 * [ ] 🤖 **6.1** Logs + request-id (Code/Vercel)
@@ -73,7 +74,7 @@
 
 ---
 
-## 7. Redis (Upstash) — [[7 Upstash Redis (если используется)]]
+## 7. Redis (Upstash) — [7-upstash-redis.md](7-upstash-redis.md)
 *Сначала 🤖, в конце 👤*
 
 * [ ] 🤖 **7.2** Redis TTL + namespaces (Code)
@@ -82,10 +83,10 @@
 
 ---
 
-## 8. Dependencies — [[8 Dependency scanning]]
+## 8. Dependencies — [8-dependency-scanning.md](8-dependency-scanning.md)
 *🤖 в CI и/или 👤 в GitHub*
 
 * [ ] 🤖👤 **8.1** Dependency scanning in CI (npm audit / Dependabot/Renovate)
 
 ---
-> **Уровень 2:** расширенный контроль — раздел B (Безопасность) и C (Секреты) в «Проектный Quality Checklist».
+> **Уровень 2:** расширенный контроль — раздел B (Безопасность) и C (Секреты) в [release-audit-checklist.md](../Quality/release-audit-checklist.md).
